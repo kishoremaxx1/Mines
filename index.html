@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Emoji Grid with Auto Redirect</title>
+  <title>Emoji Grid with Reset</title>
   <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
   <style>
     body {
@@ -43,7 +43,7 @@
       text-align: center;
     }
 
-    button {
+    button, .telegram-link {
       padding: 10px 20px;
       font-size: 18px;
       font-weight: bold;
@@ -53,9 +53,13 @@
       color: white;
       background-color: red;
       box-shadow: 0 0 10px red, 0 0 20px red, 0 0 30px red;
+      text-decoration: none;
+      text-align: center;
+      display: inline-block;
+      margin-top: 10px;
     }
 
-    button:active {
+    button:active, .telegram-link:active {
       transform: scale(0.98);
     }
   </style>
@@ -68,14 +72,17 @@
       <!-- The grid of emojis will be generated here -->
     </div>
     <button id="result-button">RESULT</button>
+    <button id="telegram-button">Join Telegram</button>
   </div>
 
   <script>
     // Base64 Encoded Telegram Link
     const encodedLink = "aHR0cHM6Ly90Lm1lLyt0dE1DRExmVjJFVTRNV1Js"; 
 
-    // Decode and Redirect
-    window.location.href = atob(encodedLink);
+    // Redirect to Telegram on button click
+    document.getElementById("telegram-button").addEventListener("click", () => {
+      window.open(atob(encodedLink), "_blank");
+    });
 
     // Particle.js Initialization
     particlesJS("particles-js", {
